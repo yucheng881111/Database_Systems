@@ -1,0 +1,6 @@
+select "Country_Region" from(
+	select "Country_Region", sum("Confirmed") as s from "323"
+	where "Last_Update" like '2022-03-24%'
+	group by "Country_Region"
+) as tmp
+where tmp.s > 1000000

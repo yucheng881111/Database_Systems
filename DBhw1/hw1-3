@@ -1,0 +1,10 @@
+select "C1" as "Country_Region", tmp2."S2" - tmp1."S1" as "newly diagnosed" from(
+	select "Country_Region" as "C1", sum("Confirmed") as "S1" from "322"
+	where "Last_Update" like '2022-03-23%'
+	group by "Country_Region"
+) as tmp1, (
+	select "Country_Region" as "C2", sum("Confirmed") as "S2" from "323"
+	where "Last_Update" like '2022-03-24%'
+	group by "Country_Region"
+) as tmp2
+where tmp1."C1" = tmp2."C2" and tmp2."S2" - tmp1."S1" > 100000

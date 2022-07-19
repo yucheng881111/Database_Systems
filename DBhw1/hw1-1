@@ -1,0 +1,3 @@
+select sum("Confirmed") from "323" 
+where "Province_State"='Kansas' and "Country_Region"='US' 
+and "Last_Update" like '2022-03-24%'
